@@ -1,6 +1,8 @@
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import HeaderAuth from "../../components/HeaderAuth";
 import FooterAuth from "../../components/FooterAuth";
+import Input from "../../components/UI/Input";
 import "../../stylesheets/auth.css";
 /**
  * @author Lin
@@ -16,18 +18,37 @@ const Signup = (props) => {
             <h1>Sign up to eCommerce</h1>
           </div>
           <Form className="auth-form">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
+            <div className="flex-row">
+              <Input
+                label="First Name"
+                placeholder="First Name"
+                value=""
+                type="text"
+                onChange={() => {}}
+              />
+              <Input
+                label="Last Name"
+                placeholder="Last Name"
+                value=""
+                type="text"
+                onChange={() => {}}
+              />
+            </div>
+            <Input
+              label="Email"
+              placeholder="Email"
+              value=""
+              type="email"
+              onChange={() => {}}
+            />
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
+            <Input
+              label="Password"
+              placeholder="Password"
+              value=""
+              type="password"
+              onChange={() => {}}
+            />
             <Button className="auth-button" variant="primary" type="submit">
               Sign up
             </Button>

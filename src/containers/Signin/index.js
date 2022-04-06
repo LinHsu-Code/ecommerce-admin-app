@@ -1,7 +1,9 @@
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import HeaderAuth from "../../components/HeaderAuth";
 import FooterAuth from "../../components/FooterAuth";
+import Input from "../../components/UI/Input";
 import "../../stylesheets/auth.css";
 /**
  * @author Lin
@@ -17,18 +19,21 @@ const Signin = (props) => {
             <h1>Sign in to eCommerce</h1>
           </div>
           <Form className="auth-form">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
+            <Input
+              label="Email"
+              placeholder="Email"
+              value=""
+              type="email"
+              onChange={() => {}}
+            />
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
+            <Input
+              label="Password"
+              placeholder="Password"
+              value=""
+              type="password"
+              onChange={() => {}}
+            />
             <Button className="auth-button" variant="primary" type="submit">
               Sign in
             </Button>

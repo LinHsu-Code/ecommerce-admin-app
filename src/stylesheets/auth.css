@@ -54,6 +54,8 @@
   margin: 0 auto;
   padding-right: 16px;
   padding-left: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-form-header {
@@ -74,6 +76,17 @@
   background-color: #f6f8fa;
   border: 1px solid #d8dee4;
   border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.auth-form > .flex-row > .mb-3:first-of-type {
+  margin-right: 5px;
 }
 
 .auth-button {
