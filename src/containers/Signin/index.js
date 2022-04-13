@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import HeaderAuth from "../../components/HeaderAuth";
 import FooterAuth from "../../components/FooterAuth";
 import Input from "../../components/UI/Input";
 import "../../stylesheets/auth.css";
 
-//import { postLogin } from "../../store/userSlice";
 import { login } from "../../actions";
 
 /**
@@ -20,17 +20,28 @@ const Signin = (props) => {
   //const [error, setError] = useState("");
 
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  let navigate = useNavigate();
 
-  const userLogin = (e) => {
+  useEffect(() => {
+    if (auth.authenticate) {
+      navigate("/", { replace: true });
+    }
+  }, []);
+
+  const userLogin = async (e) => {
     e.preventDefault();
     const user = {
       email,
       password,
     };
-    dispatch(login(user));
+    dispatch(login(user)).then(() => {
+      if (auth.authenticate) {
+        navigate("/");
+      }
+    });
+    console.log(auth.authenticate);
   };
-
-  //const user = useSelector((state) => state.user);
 
   return (
     <div className="auth-wrapper">
