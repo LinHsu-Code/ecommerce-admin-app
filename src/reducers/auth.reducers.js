@@ -10,6 +10,7 @@ const initState = {
   },
   authenticate: false,
   authenticating: false,
+  error: "",
 };
 
 const authReducer = (state = initState, action) => {
@@ -27,6 +28,17 @@ const authReducer = (state = initState, action) => {
         token: action.payload.token,
         authenticate: true,
         authenticating: false,
+      };
+      break;
+    case authConstants.LOGIN_FAILURE:
+      state = {
+        ...state,
+        error: action.payload.error,
+      };
+      break;
+    case authConstants.LOGOUT_REQUEST:
+      state = {
+        ...initState,
       };
       break;
     default:

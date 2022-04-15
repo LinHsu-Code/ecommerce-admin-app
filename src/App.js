@@ -5,7 +5,17 @@ import Home from "./containers/Home";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
 import PrivateRoute from "./components/HOC/PrivateRoute";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { isUserLoggedIn } from "./actions";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(isUserLoggedIn());
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -19,9 +29,9 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="signin" element={<Signin />} />
+            <Route path="signup" element={<Signup />} />
           </Route>
-          <Route path="signin" element={<Signin />} />
-          <Route path="signup" element={<Signup />} />
         </Routes>
       </Router>
     </div>

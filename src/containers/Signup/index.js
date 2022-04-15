@@ -1,7 +1,7 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
-import HeaderAuth from "../../components/HeaderAuth";
-import FooterAuth from "../../components/FooterAuth";
 import Input from "../../components/UI/Input";
 import "../../stylesheets/auth.css";
 /**
@@ -9,9 +9,17 @@ import "../../stylesheets/auth.css";
  * @function Page:Signup
  */
 const Signup = (props) => {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
+
   return (
-    <div>
-      <HeaderAuth />
+    <div className="content-container">
       <main>
         <div className="auth-form-wrapper">
           <div className="auth-form-header">
@@ -55,7 +63,6 @@ const Signup = (props) => {
           </Form>
         </div>
       </main>
-      <FooterAuth />
     </div>
   );
 };

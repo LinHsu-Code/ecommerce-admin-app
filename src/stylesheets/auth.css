@@ -59,6 +59,7 @@
 }
 
 .auth-form-header {
+  margin-top: 32px;
   margin-bottom: 16px;
   color: #24292f;
   text-align: center;

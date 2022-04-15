@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import HeaderAuth from "../../components/HeaderAuth";
-import FooterAuth from "../../components/FooterAuth";
 import Input from "../../components/UI/Input";
 import "../../stylesheets/auth.css";
 
@@ -20,11 +18,10 @@ const Signin = (props) => {
   //const [error, setError] = useState("");
 
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (auth.authenticate) {
+    if (localStorage.getItem("token")) {
       navigate("/", { replace: true });
     }
   }, []);
@@ -36,16 +33,12 @@ const Signin = (props) => {
       password,
     };
     dispatch(login(user)).then(() => {
-      if (auth.authenticate) {
-        navigate("/");
-      }
+      navigate("/");
     });
-    console.log(auth.authenticate);
   };
 
   return (
-    <div className="auth-wrapper">
-      <HeaderAuth />
+    <div className="content-container">
       <main>
         <div className="auth-form-wrapper">
           <div className="auth-form-header">
@@ -76,7 +69,6 @@ const Signin = (props) => {
           </p>
         </div>
       </main>
-      <FooterAuth />
     </div>
   );
 };

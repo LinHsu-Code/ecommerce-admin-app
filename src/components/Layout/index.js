@@ -1,17 +1,18 @@
-import React from "react";
 import Header from "../Header";
 import { Outlet } from "react-router-dom";
+import { Stack } from "react-bootstrap";
+import "./style.css";
 /**
  * @author Lin
  * @function Layout
  */
-const Layout = (props) => {
+const Layout = () => {
   return (
-    <div>
+    <Stack className="supper-container">
       <Header />
       <Outlet />
-      <div>footer</div>
-    </div>
+      <div className="footer">footer</div>
+    </Stack>
   );
 };
 export default Layout;
