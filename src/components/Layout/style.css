@@ -1,6 +1,10 @@
 .supper-container {
   min-height: 100vh;
 }
+.content-container {
+  flex: 1;
+  display: flex;
+}
 .footer {
   background-color: #ddd;
 }

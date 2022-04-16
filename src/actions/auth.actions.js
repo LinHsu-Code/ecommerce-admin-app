@@ -2,31 +2,31 @@ import { authConstants } from "./constants";
 import axios from "../utils/axios";
 
 export const login = (user) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch({ type: authConstants.LOGIN_REQUEST });
-    const res = await axios.post("/admin/signin", { ...user });
-
-    if (res.status === 200) {
-      const { token, user } = res.data;
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
-      dispatch({
-        type: authConstants.LOGIN_SUCCESS,
-        payload: {
-          token,
-          user,
-        },
-      });
-    } else {
-      if (res.status === 400) {
+    axios
+      .post("/admin/signin", { ...user })
+      .then((res) => {
+        const { token, user } = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch({
+          type: authConstants.LOGIN_SUCCESS,
+          payload: {
+            token,
+            user,
+          },
+        });
+      })
+      .catch((err) => {
+        const { errorMessage } = err.response.data;
         dispatch({
           type: authConstants.LOGIN_FAILURE,
           payload: {
-            error: res.data.error,
+            errorMessage,
           },
         });
-      }
-    }
+      });
   };
 };
 
@@ -46,7 +46,7 @@ export const isUserLoggedIn = () => {
       dispatch({
         type: authConstants.LOGIN_FAILURE,
         payload: {
-          error: "Failed to login",
+          // errorMessage: "Failed to login",
         },
       });
     }

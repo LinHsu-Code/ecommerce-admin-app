@@ -1,4 +1,3 @@
-import { Row, Col } from "react-bootstrap";
 import "./style.css";
 
 /**
@@ -7,14 +6,10 @@ import "./style.css";
  */
 const Home = (props) => {
   return (
-    <Row className="content-container">
-      <Col md={2} className="sidebar">
-        side bar
-      </Col>
-      <Col md={10} className="main">
-        container
-      </Col>
-    </Row>
+    <div className="content-container">
+      <div className="sidebar">s</div>
+      <div className="main">m</div>
+    </div>
   );
 };
 export default Home;
