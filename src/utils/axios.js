@@ -4,7 +4,7 @@ import axios from "axios";
 const axiosInstance = axios.create({
   baseURL: api,
   headers: {
-    authorization: localStorage.getItem("token")
+    Authorization: localStorage.getItem("token")
       ? `Bearer ${localStorage.getItem("token")}`
       : "",
   },

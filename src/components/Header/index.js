@@ -22,11 +22,10 @@ const Header = (props) => {
       <Container fluid>
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav activeKey={pathname} className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end"
+        >
           {auth.authenticate ? (
             <Nav activeKey={pathname}>
               <Nav.Link href="#" onClick={userLogout}>

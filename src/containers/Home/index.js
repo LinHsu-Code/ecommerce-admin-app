@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link, Outlet } from "react-router-dom";
 import "./style.css";
 
 /**
@@ -19,8 +20,19 @@ const Home = (props) => {
 
   return (
     <div className="content-container">
-      <div className="sidebar">s</div>
-      <div className="main">m</div>
+      <div className="sidebar">
+        <ul>
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
+            <Link to="/orders">Orders</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="main">
+        <Outlet />
+      </div>
     </div>
   );
 };

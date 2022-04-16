@@ -4,6 +4,8 @@ import Layout from "./components/Layout";
 import Home from "./containers/Home";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
+import Products from "./components/Products";
+import Orders from "./components/Orders";
 import PrivateRoute from "./components/HOC/PrivateRoute";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -14,7 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(isUserLoggedIn());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -22,13 +24,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route
-              index
+              path="/"
               element={
                 <PrivateRoute>
                   <Home />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path="products" element={<Products />} />
+              <Route path="orders" element={<Orders />} />
+            </Route>
             <Route path="signin" element={<Signin />} />
             <Route path="signup" element={<Signup />} />
           </Route>
