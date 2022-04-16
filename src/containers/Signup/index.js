@@ -12,6 +12,7 @@ import "../../stylesheets/auth.css";
 const Signup = (props) => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
+  const authState = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -19,9 +20,8 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (userState.load) {
-      navigate("/signin");
-    }
+    userState.load && navigate("/signin");
+    authState.authenticate && navigate("/");
   });
 
   const userSignup = (e) => {

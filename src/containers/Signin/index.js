@@ -42,7 +42,7 @@ const Signin = (props) => {
         <div className="auth-form-header">
           <h1>Sign in to eCommerce</h1>
         </div>
-        <Form className="auth-form" onSubmit={userLogin}>
+        <Form className="auth-form" onSubmit={(e) => userLogin(e)}>
           <Input
             label="Email"
             placeholder="Email"

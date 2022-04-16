@@ -18,11 +18,11 @@ export const signup = (user) => {
       .catch((err) => {
         let { errorMessage } = err.response.data;
         if (err.response.data.errors) {
-          err.response.data.errors.reduce(
-            (prev, curr) => `${prev.msg}</br>${curr.msg}`,
+          errorMessage = err.response.data.errors.reduce(
+            (prev, curr) => `${prev}${curr.msg}
+            `,
             ""
           );
-          errorMessage = err.response.data.errors[0].msg;
         }
 
         console.log(err.response.data);

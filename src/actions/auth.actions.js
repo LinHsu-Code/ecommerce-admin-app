@@ -55,9 +55,24 @@ export const isUserLoggedIn = () => {
 
 export const logout = () => {
   return async (dispatch) => {
-    localStorage.clear();
     dispatch({
       type: authConstants.LOGOUT_REQUEST,
     });
+    axios
+      .post("/admin/signout")
+      .then(() => {
+        localStorage.clear();
+        dispatch({
+          type: authConstants.LOGOUT_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: authConstants.LOGOUT_FAILURE,
+          payload: {
+            errorMessage: err.response.data.errorMessage,
+          },
+        });
+      });
   };
 };
