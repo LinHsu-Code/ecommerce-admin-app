@@ -4,7 +4,6 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import Input from "../../components/UI/Input";
-import "../../stylesheets/auth.css";
 
 import { login } from "../../actions";
 
@@ -23,7 +22,7 @@ const Signin = (props) => {
 
   useEffect(() => {
     if (authState.authenticate) {
-      navigate("/");
+      navigate("/product");
     }
   });
 

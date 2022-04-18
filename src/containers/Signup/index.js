@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import { signup } from "../../actions";
-import "../../stylesheets/auth.css";
 /**
  * @author Lin
  * @function Page:Signup
