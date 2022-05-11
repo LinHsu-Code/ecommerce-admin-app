@@ -35,6 +35,7 @@ const categoryReducer = (state = initState, action) => {
       };
       break;
     default:
+      break;
   }
   return state;
 };
