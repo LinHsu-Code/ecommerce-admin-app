@@ -1,0 +1,47 @@
+/* layout style----------------------------------- */
+.supper-container {
+  min-height: 100vh;
+}
+.content-container {
+  flex: 1;
+  display: flex;
+}
+.footer {
+  background-color: #ddd;
+}
+
+.main {
+  flex: 10;
+  padding: 16px 24px;
+}
+
+.sidebar {
+  flex: 2;
+  background-color: #eee;
+  box-shadow: inset 0 0 2px gray;
+  min-width: 150px;
+}
+
+.sidebar a {
+  display: block;
+}
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+.sidebar ul li {
+  list-style: none;
+}
+.sidebar ul li a {
+  display: block;
+  color: #333;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  margin: 5px 0 5px 10px;
+  border-radius: 5px 0 0 5px;
+  text-decoration: none;
+}
+.sidebar ul li a.active {
+  background: #333;
+  color: #fff;
+}

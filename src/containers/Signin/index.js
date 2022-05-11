@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import Input from "../../components/UI/Input";
 
 import { login } from "../../actions";
+import "../../stylesheets/style.css";
 
 /**
  * @author Lin
@@ -43,6 +44,7 @@ const Signin = (props) => {
         </div>
         <Form className="auth-form" onSubmit={(e) => userLogin(e)}>
           <Input
+            controlId="forEmail"
             label="Email"
             placeholder="Email"
             value={email}
@@ -51,6 +53,7 @@ const Signin = (props) => {
           />
 
           <Input
+            controlId="forPassword"
             label="Password"
             placeholder="Password"
             value={password}

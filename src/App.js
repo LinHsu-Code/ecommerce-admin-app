@@ -6,16 +6,16 @@ import Signup from "./containers/Signup";
 import Product from "./containers/Product";
 import Category from "./containers/Category";
 import Order from "./containers/Order";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { isUserLoggedIn } from "./actions";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { isUserLoggedIn } from "./actions";
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(isUserLoggedIn());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(isUserLoggedIn());
+  // }, [dispatch]);
 
   return (
     <div className="App">

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import { signup } from "../../actions";
+import "../../stylesheets/style.css";
 /**
  * @author Lin
  * @function Page:Signup
@@ -18,10 +19,9 @@ const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    userState.load && navigate("/signin");
-    authState.authenticate && navigate("/");
-  });
+  // useEffect(() => {
+  //   authState.authenticate && navigate("/product");
+  // }, []);
 
   const userSignup = (e) => {
     e.preventDefault();
@@ -32,6 +32,7 @@ const Signup = (props) => {
       password,
     };
     dispatch(signup(user));
+    //userState.load && navigate("/signin");
   };
 
   return (
@@ -43,6 +44,7 @@ const Signup = (props) => {
         <Form className="auth-form" onSubmit={userSignup}>
           <div className="flex-row">
             <Input
+              controlId="forFirstName"
               label="First Name"
               placeholder="First Name"
               value={firstName}
@@ -53,6 +55,7 @@ const Signup = (props) => {
             />
 
             <Input
+              controlId="forLastName"
               label="Last Name"
               placeholder="Last Name"
               value={lastName}
@@ -64,6 +67,7 @@ const Signup = (props) => {
           </div>
 
           <Input
+            controlId="forEmail"
             label="Email"
             placeholder="Email"
             value={email}
@@ -74,6 +78,7 @@ const Signup = (props) => {
           />
 
           <Input
+            controlId="forPassword"
             label="Password"
             placeholder="Password"
             value={password}

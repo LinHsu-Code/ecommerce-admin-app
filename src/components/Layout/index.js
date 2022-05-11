@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { Navbar, Container, Nav, Stack } from "react-bootstrap";
 import { logout } from "../../actions";
-import { Link, Outlet } from "react-router-dom";
-import "../../stylesheets/style.css";
+import { NavLink, Outlet } from "react-router-dom";
+import "./style.css";
 /**
  * @author Lin
  * @function Layout
@@ -15,11 +15,11 @@ const Layout = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    if (!authState.authenticate) {
-      navigate("/signin");
-    }
-  }, [authState, navigate]);
+  // useEffect(() => {
+  //   if (!authState.authenticate) {
+  //     navigate("/signin");
+  //   }
+  // }, [authState, navigate]);
 
   const userLogout = () => {
     dispatch(logout());
@@ -60,13 +60,16 @@ const Layout = () => {
             <div className="sidebar">
               <ul>
                 <li>
-                  <Link to="/product">Product</Link>
+                  <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <Link to="/category">Category</Link>
+                  <NavLink to="/category">Category</NavLink>
                 </li>
                 <li>
-                  <Link to="/order">Order</Link>
+                  <NavLink to="/product">Product</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/order">Order</NavLink>
                 </li>
               </ul>
             </div>
