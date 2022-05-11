@@ -69,7 +69,7 @@ const Category = () => {
       <Container>
         <Row>
           <Col md={12}></Col>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className="pageHeader">
             <h3>Category</h3>
             <Button onClick={handleShow}>Add</Button>
           </div>
