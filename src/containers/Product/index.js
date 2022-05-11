@@ -3,7 +3,7 @@ import { Container, Row, Col, Table, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import Modal from "../../components/UI/Modal";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts, addProduct, deleteProductById } from "../../actions";
+import { getProducts, addProduct, deleteProduct } from "../../actions";
 import "./style.css";
 
 const Product = (props) => {
@@ -24,13 +24,16 @@ const Product = (props) => {
     dispatch(getProducts());
   }, []);
 
-  const handleClose = () => {
+  const clearModal = () => {
     setName("");
     setQuantity("");
     setPrice("");
     setDescription("");
     setCategoryId("");
     setProductPictures([]);
+  };
+  const handleClose = () => {
+    clearModal();
     setShow(false);
   };
 
@@ -47,6 +50,7 @@ const Product = (props) => {
     }
 
     dispatch(addProduct(form)).then(() => setShow(false));
+    clearModal();
   };
   const handleShow = () => setShow(true);
 
@@ -96,10 +100,7 @@ const Product = (props) => {
                     <Button
                       size="sm"
                       onClick={() => {
-                        const payload = {
-                          productId: product._id,
-                        };
-                        dispatch(deleteProductById(payload));
+                        dispatch(deleteProduct(product._id));
                       }}
                     >
                       DELETE

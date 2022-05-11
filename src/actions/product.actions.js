@@ -38,11 +38,11 @@ export const addProduct = (form) => {
   };
 };
 
-export const deleteProductById = (payload) => {
+export const deleteProduct = (id) => {
   return async (dispatch) => {
     try {
-      const res = await axios.delete(`product/deleteProductById`, {
-        data: { payload },
+      const res = await axios.delete(`product/delete`, {
+        data: { productId: id },
       });
       dispatch({ type: productConstants.DELETE_PRODUCT_REQUEST });
       if (res.status === 202) {
